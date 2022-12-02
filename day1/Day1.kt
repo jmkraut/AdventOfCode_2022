@@ -1,11 +1,10 @@
-package d1;
+package day1
 
 import java.io.File
 
-fun main(args: Array<String>) {
-
-    val filename = "d1/resources/d1_input.txt"
-    val testFilename = "d1/resources/d1_input_test.txt"
+fun day1Solution() {
+    val filename = "day1/resources/d1_input.txt"
+    val testFilename = "day1/resources/d1_input_test.txt"
 
     val calorieList = ArrayList<Int>()
     var calories = 0
