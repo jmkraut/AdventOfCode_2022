@@ -19,6 +19,8 @@ fun day1Solution() {
     }
     calorieList.sortDescending()
 
-    println("Most calories on one elf: " + calorieList.elementAt(0))
-    println("Total calories on top three elves: " + (calorieList.elementAt(0) + calorieList.elementAt(1) + calorieList.elementAt(2)))
+    println("~~~ Day 1 ~~~")
+    println("Part 1 ~ Most calories on one elf: " + calorieList.elementAt(0))
+    println("Part 2 ~ Total calories on top three elves: " + (calorieList.elementAt(0) + calorieList.elementAt(1) + calorieList.elementAt(2)))
+    println("~~~~~~~~~~~~~")
 }

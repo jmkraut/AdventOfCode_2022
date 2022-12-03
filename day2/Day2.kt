@@ -12,7 +12,9 @@ fun day2Solution () {
         val gameChars = it.toCharArray()
         totalPoints += (getOutcomeOfRound(gameChars[0], gameChars[2]).Points + StrategyMove.valueOf(gameChars[2].toString()).Play.Points)
     }
-    println(totalPoints)
+    println("~~~ Day 2 ~~~")
+    println("Part 1 ~ Total points for first game: $totalPoints")
+    println("~~~~~~~~~~~~~")
 }
 
 fun getOutcomeOfRound(player1Move: Char, player2Move: Char): GameOutcome {
