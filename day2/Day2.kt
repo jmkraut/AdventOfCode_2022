@@ -19,7 +19,7 @@ fun day2Solution () {
     }
     println("~~~ Day 2 ~~~")
     println("Part 1 ~ Total points for first game: $totalPointsPart1")
-    println("Part 1 ~ Total points for first game: $totalPointsPart2")
+    println("Part 2 ~ Total points for first game: $totalPointsPart2")
     println("~~~~~~~~~~~~~")
 }
 
