@@ -7,38 +7,21 @@ fun day3Solution () {
     val testFilename = "day3/resources/d3_input_test.txt"
 
     var rucksackPrioritiesSum = 0
+    val lowercaseCharPriorityCorrectionValue = 96
+    val uppercaseCharPriorityCorrectionValue = 38
 
     File(filename).forEachLine { it ->
         val rucksack1 = (it.substring(0 , it.length / 2)).toCharArray()
         val rucksack2 = (it.substring(it.length / 2, it.length)).toCharArray()
 
         val result = rucksack1.first {
-            isCharValueInCharArray(it, rucksack2)
+            rucksack2.contains(it)
         }
 
-        rucksackPrioritiesSum += getCharPriorityValue(result)
+        rucksackPrioritiesSum += if(result.isUpperCase()) result.code - uppercaseCharPriorityCorrectionValue else result.code - lowercaseCharPriorityCorrectionValue
     }
 
     println("~~~ Day 3 ~~~")
     println("Part 1 ~ Sum of priorities of the rucksacks: $rucksackPrioritiesSum")
     println("~~~~~~~~~~~~~")
-}
-
-fun isCharValueInCharArray(characterToCheck: Char, arrayToCheck: CharArray): Boolean {
-    for(char in arrayToCheck) {
-        if(char == characterToCheck) {
-            return true
-        }
-    }
-    return false
-}
-
-fun getCharPriorityValue(char: Char): Int {
-    val lowercaseCharPriorityCorrectionValue = 96
-    val uppercaseCharPriorityCorrectionValue = 38
-
-    if(char.isUpperCase()) {
-        return char.code - uppercaseCharPriorityCorrectionValue
-    }
-    return char.code - lowercaseCharPriorityCorrectionValue
 }
