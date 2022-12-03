@@ -7,8 +7,6 @@ fun day3Solution () {
     val testFilename = "day3/resources/d3_input_test.txt"
 
     var rucksackPrioritiesSum = 0
-    val lowercaseCharPriorityCorrectionValue = 96
-    val uppercaseCharPriorityCorrectionValue = 38
 
     val elfGroups = ArrayList<String>()
 
@@ -20,7 +18,7 @@ fun day3Solution () {
         val result = rucksack1.first {
             rucksack2.contains(it)
         }
-        rucksackPrioritiesSum += if(result.isUpperCase()) result.code - uppercaseCharPriorityCorrectionValue else result.code - lowercaseCharPriorityCorrectionValue
+        rucksackPrioritiesSum += codeTotal(result)
     }
 
     val setOfElves = ArrayList<CharArray>()
@@ -32,7 +30,7 @@ fun day3Solution () {
             val result = setOfElves[0].first {
                 setOfElves[1].contains(it) && setOfElves[2].contains(it)
             }
-            rucksackBadgesSum += if(result.isUpperCase()) result.code - uppercaseCharPriorityCorrectionValue else result.code - lowercaseCharPriorityCorrectionValue
+            rucksackBadgesSum += codeTotal(result)
             setOfElves.clear()
         }
     }
@@ -41,4 +39,11 @@ fun day3Solution () {
     println("Part 1 ~ Sum of priorities of the rucksacks: $rucksackPrioritiesSum")
     println("Part 2 ~ Sum of badges of the rucksacks: $rucksackBadgesSum")
     println("~~~~~~~~~~~~~")
+}
+
+fun codeTotal(result: Char): Int {
+    val lowercaseCharPriorityCorrectionValue = 96
+    val uppercaseCharPriorityCorrectionValue = 38
+
+    return if (result.isUpperCase()) result.code - uppercaseCharPriorityCorrectionValue else result.code - lowercaseCharPriorityCorrectionValue
 }
