@@ -36,28 +36,19 @@ fun getPointsForRoundPart1(player1Move: StrategyMove, player2Move: StrategyMove)
 }
 
 fun getPointsForRoundPart2(player1Move: StrategyMove, player2Move: StrategyMove): Int {
-    if(player1Move.play == Move.ROCK && player2Move == StrategyMove.X) return GameOutcome.LOSE.points + Move.SCISSORS.points
-    if(player1Move.play == Move.ROCK && player2Move == StrategyMove.Y) return GameOutcome.DRAW.points + Move.ROCK.points
-    if(player1Move.play == Move.ROCK && player2Move == StrategyMove.Z) return GameOutcome.WIN.points + Move.PAPER.points
+    if(player2Move == StrategyMove.X) return GameOutcome.LOSE.points + player1Move.playBeats.points
+    if(player2Move == StrategyMove.Z) return GameOutcome.WIN.points + player1Move.playLoses.points
 
-    if(player1Move.play == Move.PAPER && player2Move == StrategyMove.X) return GameOutcome.LOSE.points + Move.ROCK.points
-    if(player1Move.play == Move.PAPER && player2Move == StrategyMove.Y) return GameOutcome.DRAW.points + Move.PAPER.points
-    if(player1Move.play == Move.PAPER && player2Move == StrategyMove.Z) return GameOutcome.WIN.points + Move.SCISSORS.points
-
-    if(player1Move.play == Move.SCISSORS && player2Move == StrategyMove.X) return GameOutcome.LOSE.points + Move.PAPER.points
-    if(player1Move.play == Move.SCISSORS && player2Move == StrategyMove.Y) return GameOutcome.DRAW.points + Move.SCISSORS.points
-    if(player1Move.play == Move.SCISSORS && player2Move == StrategyMove.Z) return GameOutcome.WIN.points + Move.ROCK.points
-
-    return 0
+    return GameOutcome.DRAW.points + player1Move.play.points
 }
 
-enum class StrategyMove(val play: Move) {
-    A(Move.ROCK),
-    B(Move.PAPER),
-    C(Move.SCISSORS),
-    X(Move.ROCK),
-    Y(Move.PAPER),
-    Z(Move.SCISSORS),
+enum class StrategyMove(val play: Move, val playBeats: Move, val playLoses: Move) {
+    A(Move.ROCK, Move.SCISSORS, Move.PAPER),
+    B(Move.PAPER, Move.ROCK, Move.SCISSORS),
+    C(Move.SCISSORS, Move.PAPER, Move.ROCK),
+    X(Move.ROCK, Move.SCISSORS, Move.PAPER),
+    Y(Move.PAPER, Move.ROCK, Move.SCISSORS),
+    Z(Move.SCISSORS, Move.PAPER, Move.ROCK)
 }
 
 enum class Move(val points: Int) {
